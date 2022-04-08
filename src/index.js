@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import { StoreProvider } from './store/Store';
+import { initialState, mindMapReducer } from './store/mindMapReducer';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <StoreProvider initialState={initialState} reducer={mindMapReducer}>
+        <App />
+      </StoreProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
